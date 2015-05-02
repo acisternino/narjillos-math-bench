@@ -1,0 +1,18 @@
+*.exp
+*.gpl
+.DS_Store
+
+example/
+
+#-- Gradle --------
+.gradle/
+build/
+
+#-- IDEs ----------
+.classpath
+.project
+.settings/
+bin/
+.nb-gradle/
+.nb-gradle-properties
+

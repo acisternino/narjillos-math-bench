@@ -1,0 +1,42 @@
+/*
+ *  narjillos-math-bench build script.
+ *
+ *  https://github.com/acisternino/narjillos-math-bench
+ */
+
+plugins {
+    id "me.champeau.gradle.jmh" version "0.2.0"
+}
+
+group   = 'org.nusco.narjillos'
+version = '0.1.0'
+
+apply plugin: 'java'
+apply plugin: 'me.champeau.gradle.jmh'
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+sourceCompatibility = '1.8'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testCompile     'junit:junit:4.11'
+}
+
+jmh {
+    include    = 'org.nusco.narjillos.jmh.*'
+    jmhVersion = '1.9.1'
+    jvmArgs    = '-Xmx1280m'
+    fork       = 2
+    threads    = 2
+    iterations       = 5
+    warmupIterations = 5
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
