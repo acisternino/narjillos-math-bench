@@ -73,11 +73,11 @@ public class FastMathBenchmark {
         return FastMath.cos(a);
     }
 
-    //---- atan(b) & atan2(b, 5) ------------------------------------
+    //---- atan(b, 5) -----------------------------------------------
     
     @Benchmark
     public double baselineAtan() {
-        return Math.atan(b);
+        return Math.atan2(b, 5);
     }
     
     @Benchmark
