@@ -37,52 +37,37 @@ import org.openjdk.jmh.annotations.State;
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @State(Scope.Thread)
-public class FastMathBenchmark {
+public class FastMathSinCosBenchmark {
 
     static {
         FastMath.setUp();
     }
 
     @Param({"0", "5", "30", "45", "60", "85", "90"})
-    private double a;
+    private double x;
 
-    @Param({"0.5", "1", "5", "10", "100", "1000", "10000"})
-    private double b;
-
-    //---- sin(a) ---------------------------------------------------
+    //---- sin(x) ---------------------------------------------------
 
     @Benchmark
     public double baselineSin() {
-        return Math.sin(a);
+        return Math.sin(x);
     }
 
     @Benchmark
     public double fastMathSin() {
-        return FastMath.sin(a);
+        return FastMath.sin(x);
     }
 
-    //---- cos(a) ---------------------------------------------------
+    //---- cos(x) ---------------------------------------------------
 
     @Benchmark
     public double baselineCos() {
-        return Math.cos(a);
+        return Math.cos(x);
     }
 
     @Benchmark
     public double fastMathCos() {
-        return FastMath.cos(a);
-    }
-
-    //---- atan2(b, 5) ----------------------------------------------
-
-    @Benchmark
-    public double baselineAtan2() {
-        return Math.atan2(b, 5);
-    }
-
-    @Benchmark
-    public double fastMathAtan2() {
-        return FastMath.atan(b, 5);
+        return FastMath.cos(x);
     }
 
 }
