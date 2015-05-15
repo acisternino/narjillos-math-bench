@@ -1,9 +1,8 @@
 Narjillos Math Benchmarks
 =========================
 
-A simple project containing some [jmh](http://openjdk.java.net/projects/code-tools/jmh/)
-benchmarks for the FastMath class of the [Narjillos](https://github.com/nusco/narjillos)
-project.
+Simple [jmh](http://openjdk.java.net/projects/code-tools/jmh/) benchmarks for the
+[Narjillos](https://github.com/nusco/narjillos) project.
 
 ## Usage ##
 
