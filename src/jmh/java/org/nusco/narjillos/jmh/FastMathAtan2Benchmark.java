@@ -25,7 +25,6 @@
 package org.nusco.narjillos.jmh;
 
 import java.util.concurrent.TimeUnit;
-import org.nusco.narjillos.core.physics.FastMath;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Mode;
@@ -40,7 +39,7 @@ import org.openjdk.jmh.annotations.State;
 public class FastMathAtan2Benchmark {
 
     static {
-        FastMath.setUp();
+        org.nusco.narjillos.core.physics.FastMath.setUp();
     }
 
     @Param({"0.5", "1", "5", "10", "100", "1000", "10000"})
@@ -54,8 +53,13 @@ public class FastMathAtan2Benchmark {
     }
 
     @Benchmark
-    public double fastMathAtan2() {
-        return FastMath.atan(x, 5);
+    public double narjillosFastMathAtan2() {
+        return org.nusco.narjillos.core.physics.FastMath.atan(x, 5);
+    }
+
+    @Benchmark
+    public double commonsFastMathAtan2() {
+        return org.apache.commons.math3.util.FastMath.atan2(x, 5);
     }
 
 }

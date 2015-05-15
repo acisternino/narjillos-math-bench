@@ -25,7 +25,6 @@
 package org.nusco.narjillos.jmh;
 
 import java.util.concurrent.TimeUnit;
-import org.nusco.narjillos.core.physics.FastMath;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Mode;
@@ -40,7 +39,7 @@ import org.openjdk.jmh.annotations.State;
 public class FastMathSinCosBenchmark {
 
     static {
-        FastMath.setUp();
+        org.nusco.narjillos.core.physics.FastMath.setUp();
     }
 
     @Param({"0", "5", "30", "45", "60", "85", "90"})
@@ -54,8 +53,13 @@ public class FastMathSinCosBenchmark {
     }
 
     @Benchmark
-    public double fastMathSin() {
-        return FastMath.sin(x);
+    public double narjillosFastMathSin() {
+        return org.nusco.narjillos.core.physics.FastMath.sin(x);
+    }
+
+    @Benchmark
+    public double commonsFastMathSin() {
+        return org.apache.commons.math3.util.FastMath.sin(x);
     }
 
     //---- cos(x) ---------------------------------------------------
@@ -66,8 +70,13 @@ public class FastMathSinCosBenchmark {
     }
 
     @Benchmark
-    public double fastMathCos() {
-        return FastMath.cos(x);
+    public double narjillosFastMathCos() {
+        return org.nusco.narjillos.core.physics.FastMath.cos(x);
+    }
+
+    @Benchmark
+    public double commonsFastMathCos() {
+        return org.apache.commons.math3.util.FastMath.cos(x);
     }
 
 }
